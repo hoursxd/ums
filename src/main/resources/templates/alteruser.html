@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>修改用户</title>
+    <link rel="stylesheet" href="css/layui.css">
+</head>
+<body>
+<div class="layui-container" style="padding-top: 10px">
+
+    <form class="layui-form" method="Post" action="/changeuser">
+
+        <fieldset class="layui-elem-field">
+            <legend>基本信息</legend>
+            <div class="layui-field-box">
+
+
+                <div class="layui-row layui-col-space10">
+
+                    <div class="layui-col-md6">
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">员工姓名</label>
+                            <div class="layui-input-block">
+                                <input type="text" id="name" name="name" th:value="${name}" autocomplete="off"
+                                       class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">登录账号</label>
+                            <div class="layui-input-block">
+                                <input type="text" id="login" name="login" th:value="${login}"
+                                       autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">登录密码</label>
+                            <div class="layui-input-block">
+                                <input type="password" id="pwd" name="pwd" th:value="${pwd}"
+                                       autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">性别</label>
+                            <div class="layui-input-block">
+                                <input type="radio" name="sex" value="1" title="男" th:checked="${sex} eq 1">
+                                <input type="radio" name="sex" value="0" title="女" th:checked="${sex} eq 0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-col-md6">
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">电子邮箱</label>
+                            <div class="layui-input-block">
+                                <input type="email" id="email" name="email" th:value="${email}"
+                                       autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">手机号码</label>
+                            <div class="layui-input-block">
+                                <input type="text" id="mobile" name="mobile" th:value="${mobile}"
+                                       autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">办公电话</label>
+                            <div class="layui-input-block">
+                                <input type="text" id="phone" name="phone" th:value="${phone}"
+                                       autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </fieldset>
+
+        <fieldset class="layui-elem-field">
+            <legend>高级信息</legend>
+            <div class="layui-field-box">
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">所属公司</label>
+                        <div class="layui-input-inline">
+                            <select id="company" name="company" th:value="${comp}">
+                                <option value=""></option>
+                                <optgroup label="山东公司">
+                                    <option th:selected="${comp} eq 2" value="2">济南公司</option>
+                                    <option th:selected="${comp} eq 3" value="3">青岛公司</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">所属部门</label>
+                        <div class="layui-input-inline">
+                            <select id="department" name="department" th:value="${dep}">
+                                <option value=""></option>
+                                <optgroup label='山东公司'></optgroup>
+                                <optgroup label='济南公司'>
+                                    <option th:selected="${dep} eq 4" value='4'>企划部</option>
+                                    <option th:selected="${dep} eq 5" value='5'>财务部</option>
+                                    <option th:selected="${dep} eq 9" value='9'>研发部</option>
+                                </optgroup>
+                                <optgroup label='青岛公司'>
+                                    <option th:selected="${dep} eq 6" value='6'>研发部</option>
+                                    <option th:selected="${dep} eq 7" value='7'>企划部</option>
+                                    <option th:selected="${dep} eq 8" value='8'>财务</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">所处状态</label>
+                    <div class="layui-input-block">
+                        <input type="checkbox" name="state" value="1" lay-skin="switch" lay-text="正常|停用" th:checked="${state} eq 1">
+                    </div>
+                </div>
+
+                <input type="text" id="id" name="id" th:value="${id}" style="display:none;"/>
+            </div>
+        </fieldset>
+
+        <div class="layui-form-item" style="text-align:center">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="demo1">立即提交</button>
+                <button class="layui-btn layui-btn-warm">取消操作</button>
+                <button class="layui-btn" style="visibility: hidden;"></button>
+            </div>
+        </div>
+
+    </form>
+</div>
+<script src="js/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function () {
+        var form = layui.form
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , laydate = layui.laydate;
+
+        //监听指定开关
+        form.on('switch(switchTest)', function (data) {
+            layer.msg('开关checked：' + (this.checked ? 'true' : 'false'), {
+                offset: '6px'
+            });
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
+
+        //监听提交
+        form.on('submit(demo1)', function (data) {
+                if (data.field.sysData == "正常") {
+                    data.field.sysData = "1";
+                }
+
+                if (data.field.sysData == "停用") {
+                    data.field.sysData = "0";
+                }
+            }
+        );
+    });
+</script>
+</body>
+</html>

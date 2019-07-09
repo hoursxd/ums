@@ -1,0 +1,52 @@
+{
+  "code": 0,
+  "msg": "ok",
+  "count": 9,
+  "data": [
+    {
+      "depart_id": 1,
+      "depart_name": "山东公司",
+      "depart_parent": 0
+    },
+    {
+      "depart_id": 2,
+      "depart_name": "济南公司",
+      "depart_parent": 1
+    },
+    {
+      "depart_id": 3,
+      "depart_name": "青岛公司",
+      "depart_parent": 1
+    },
+    {
+      "depart_id": 4,
+      "depart_name": "企划部",
+      "depart_parent": 2
+    },
+    {
+      "depart_id": 5,
+      "depart_name": "财务部",
+      "depart_parent": 2
+    },
+    {
+      "depart_id": 6,
+      "depart_name": "研发部",
+      "depart_parent": 3
+    },
+    {
+      "depart_id": 7,
+      "depart_name": "企划部",
+      "depart_parent": 3
+    },
+    {
+      "depart_id": 8,
+      "depart_name": "财务",
+      "depart_parent": 3
+    },
+    {
+      "depart_id": 9,
+      "depart_name": "研发部",
+      "depart_parent": 2
+    }
+  ]
+}

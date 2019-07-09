@@ -1,0 +1,33 @@
+#端口
+server:
+  port: 8080
+
+#mysql数据源
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/myumsdb?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: 123123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+# 定位模板的目录
+  mvc:
+    view:
+      prefix: classpath:/templates/
+      # 给返回的页面添加后缀名
+      suffix: .html
+ #   static-path-pattern: classpath:/static/**
+
+  #thymeleaf相关配置
+  thymeleaf:
+#    mode: HTML5
+#    encoding: UTF-8
+    cash: false
+
+#静态资源
+#  resources:
+#    static-locations: classpath:/static/
+  WebMvcProperties: #   这表示只有静态资源的访问路径为/assets/**时，才会处理请求
+    static-path-pattern: /assets/
+  ResourceProperties: # 用于告诉Spring Boot应该在何处查找静态资源文件
+    static-locations: classpath:/static/
